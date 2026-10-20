@@ -1,0 +1,7 @@
+﻿step,remaining,removed_at_step
+all_orders,99441,0
+final_status_delivered,96478,2963
+required_dates_complete,96456,22
+approval_not_before_purchase,96456,0
+delivery_not_before_approval,96395,61
+promise_day_not_before_approval_day,96394,1

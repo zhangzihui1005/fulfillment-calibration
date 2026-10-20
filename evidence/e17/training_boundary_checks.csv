@@ -1,0 +1,17 @@
+﻿File,Fit,TrainN,MaxFeedback,Passed
+CatBoost_O1_fit.json,2017-07-01,13134,2017-06-30 19:09:42,True
+CatBoost_O2_fit.json,2017-10-01,24858,2017-09-30 20:09:53,True
+CatBoost_O3_fit.json,2018-01-01,41504,2017-12-31 15:19:16,True
+CatBoost_O4_fit.json,2018-04-01,61094,2018-03-31 21:55:48,True
+PeriodicLR_O1_fit.json,2017-08-30,20590,2017-08-29 23:47:27,True
+PeriodicLR_O1_fit.json,2017-09-29,24635,2017-09-28 23:54:41,True
+PeriodicLR_O2_fit.json,2017-11-30,33720,2017-11-29 23:58:06,True
+PeriodicLR_O2_fit.json,2017-12-30,41389,2017-12-29 23:45:12,True
+PeriodicLR_O3_fit.json,2018-03-02,53987,2018-03-01 23:59:26,True
+PeriodicLR_O3_fit.json,2018-04-01,61094,2018-03-31 21:55:48,True
+PeriodicLR_O4_fit.json,2018-05-31,75520,2018-05-30 23:44:18,True
+PeriodicLR_O4_fit.json,2018-06-30,82140,2018-06-29 23:57:46,True
+Restricted_O1_fit.json,2017-07-01,13134,2017-06-30 19:09:42,True
+Restricted_O2_fit.json,2017-10-01,24858,2017-09-30 20:09:53,True
+Restricted_O3_fit.json,2018-01-01,41504,2017-12-31 15:19:16,True
+Restricted_O4_fit.json,2018-04-01,61094,2018-03-31 21:55:48,True

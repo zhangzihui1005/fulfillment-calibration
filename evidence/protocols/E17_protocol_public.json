@@ -1,0 +1,114 @@
+{
+  "seed": 20261009,
+  "created_utc": "2026-10-10 06:18:52.829076+00:00",
+  "scope": "Complete feasible targeted revision contrasts; no claim of independent confirmation; preserve E0-E16 and S0-S3",
+  "origins": {
+    "O1": "2017-07-01",
+    "O2": "2017-10-01",
+    "O3": "2018-01-01",
+    "O4": "2018-04-01"
+  },
+  "warmup_days": 60,
+  "evaluation_days": 60,
+  "cohort": "Same final-delivered valid-time Olist; same fit IDs and approval/feedback boundaries as S1",
+  "primary_backbone": "Exact frozen S1 LR predictions and models; no refit of main LR",
+  "core_methods": [
+    "Raw",
+    "Frozen",
+    "Expanding",
+    "Rolling60",
+    "Approval60",
+    "PoolRate",
+    "Platt",
+    "BrierOpt"
+  ],
+  "primary_comparisons": [
+    "Expanding-Raw",
+    "Expanding-Frozen",
+    "PoolRate-Raw",
+    "Expanding-PoolRate",
+    "Platt-Expanding",
+    "BrierOpt-Expanding"
+  ],
+  "secondary_comparisons": [
+    "Frozen-Raw",
+    "Rolling60-Expanding",
+    "Approval60-Rolling60",
+    "Platt-Raw",
+    "BrierOpt-Raw",
+    "PeriodicLR-Raw",
+    "PeriodicLR-Expanding"
+  ],
+  "pools": "Out-of-training a>=fit; a,r,e<daily midnight. e=max(r,promise_end). New PoolRate/Platt/BrierOpt use identical Expanding pool. Frozen fits once at evaluation start.",
+  "guard": "N>=1000, positives>=50, negatives>=50; fails => Raw; no last-good carry-forward. Solver failure => same-day LL intercept and explicit flag; never silent.",
+  "PoolRate": "Constant historical pool positive fraction, same guard",
+  "Platt": "minimize mean logloss sigma(alpha+beta*logit(p)); alpha in [-30,30], beta in [0,10]; no penalty; L-BFGS-B analytic gradient; explicit boundary and convergence diagnostics",
+  "BrierOpt": "1D bounded [-30,30] Brier intercept; 241-point derivative grid, Brent every sign crossing, bounded refinement at local grid minima; compare all candidates/endpoints and LL solution; record gradient/boundary; no tuning to evaluation",
+  "periodic_backbone": "S1 LR refit at eval start and +30days using all orders approved AND label-known before fit; train-only preprocessing; score next30days; raw probabilities only; no calibration on in-training scores",
+  "strong_backbone": "CatBoost GPU0 fixed depth4 iterations300 learning_rate.05 l2_leaf_reg3 Bernoulli subsample1; no search/early stopping; S1 inputs; train-only numeric median for CatBoost missing values; raw/Frozen/Expanding/Rolling60/Approval60",
+  "restricted_features": {
+    "remove": [
+      "weight_g_mean",
+      "volume_cm3_mean",
+      "product_photos_mean",
+      "product_description_length_mean",
+      "same_state_largest_item",
+      "customer_state",
+      "largest_item_seller_state",
+      "product_category_name",
+      "seller_observed_outcomes_min",
+      "seller_observed_outcomes_mean",
+      "seller_past_late_rate_max",
+      "seller_past_late_rate_mean"
+    ],
+    "reason": "Drop static product/location attributes without version histories AND cohort-selected outcome histories; retain order/service/calendar and prior-approval counts. Combined stress test, not causal attribution."
+  },
+  "uncertainty": {
+    "replicates": 2000,
+    "blocks_days": [
+      3,
+      7,
+      14
+    ],
+    "noncircular": true,
+    "truncate_to_60": true,
+    "paired_dates": true,
+    "fixed_predictions": true,
+    "no_training_selection_multiplicity_uncertainty": true
+  },
+  "calibration_diagnostics": "Evaluation-only logistic alpha/slope of Raw and Expanding; 7day block bootstrap (2000), unconstrained two-parameter logistic with analytic Hessian; failed fits reported. Fixed explicit bins with block intervals and support. No diagnostic fitted values used to predict.",
+  "unknown_outcomes": "Four S1 windows, expanded approval-time eligible noncanceled cohort. Original history only; frozen Raw plus exact daily Expanding offsets. Binary-label sharp Brier difference bounds; cancellation hypothetical extension separate. Snapshot horizon proxy, min followup0/30/60/90.",
+  "decision": "Daily floor(5%*N) by p*order_value_proxy, compare Raw/Expanding/ValueOnly; ID stable ties; coverage and list changes; block paired coverage intervals",
+  "unavailable": "No unexposed same-target new data or actual label-ingestion/field-version logs; not fabricated. No new dataset download or claim of prospective validation.",
+  "resources": {
+    "cpu_count": 20,
+    "core_workers": 4,
+    "native_threads_each": 5,
+    "CPU_model_workers": 4,
+    "CPU_model_threads": 4,
+    "GPU_model_concurrency": 1,
+    "GPU_host_threads": 4,
+    "metric_workers": 20,
+    "GPU_nondeterminism": "Fixed seed does not guarantee GPU bitwise refits; saved scores authoritative"
+  },
+  "source_sha256": {
+    "olist_features.pkl": "5c2a1e9a0ce3489e87373edb5555f5d576462bb762e524b757613ddf755e6c75",
+    "features.json": "e8f99780d663d590cc4d1c1e8d36b8674d260f14a345d74d62ff7ef8763eb9a5",
+    "run_baseline.py": "bb5a235483d68ed975714c89a422f124d047fbf86c9b2e0d9d8366b1d65860bc",
+    "S1_O1_scored.pkl": "04fb86489eb3caa8224d5eb2a3a46cc6e025780241f15d953cfd64c7e95af7d1",
+    "S1_O1_LR.joblib": "9f6945d2362bfece0198f12ce35e137d077565174ab6ca0693f703fe525d84d4",
+    "S1_O2_scored.pkl": "e249090898b9de2aeb2c3a1916952a8edb1ec521a934eaa574e6147653846535",
+    "S1_O2_LR.joblib": "a7c3de40258001987dacd2cd7a2c5239740f21087314c4e8f8f0cda6ef533a67",
+    "S1_O3_scored.pkl": "de690abd94fee51d17d7374484a4ea404c5b38da70c58dd536c52078178e1535",
+    "S1_O3_LR.joblib": "e8cc44081f8e53709068ad91c7f5e4027f15acbe19c12ca4dbc7f41af82dff6b",
+    "S1_O4_scored.pkl": "323bfec63452f01d7763ebe9f107f5c7c5bba79b38741ce4c84d82270bc188cb",
+    "S1_O4_LR.joblib": "0d9581c7c5d96d3825401468cda4305bdb95ac479bbd48564c8e56ce96c55964",
+    "E16S1_O1_update_pools.csv": "c59bd2d56825b222ee2d4a9b669345f045f4a0e8b7a323e4b517a57929a06237",
+    "E16S1_O2_update_pools.csv": "8e62c89b8f7ab50d19d875d6f55e754aed8dbfcc53a8b14535863d855c53bac4",
+    "E16S1_O3_update_pools.csv": "ee7bfce23bec7cdfb7a6c725ac1f344186b6e9a5b355c779b9189d4237fcc949",
+    "E16S1_O4_update_pools.csv": "a9b8989651fee7ca89c6948529212981d6277a13dc5e3376554de1401eab7f03",
+    "Olist.zip": "967e41e04fc306fe604e2a693f488995a8b41e5047418f8a5c8e4abd6deca784"
+  },
+  "execution_script_sha256": "947b3d40dcbc697e6854657e44931e5f2882b2b2f10f474c79f114f839c701b2",
+  "public_copy_note": "Original local paths replaced with basenames; original protocol remains in user archive."
+}

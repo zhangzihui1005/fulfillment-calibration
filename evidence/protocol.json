@@ -1,0 +1,237 @@
+{
+  "created_utc": "2026-10-20T03:32:00.387828+00:00",
+  "status": "Locked before E18/E19 outcomes; no parameter selection using new outcomes",
+  "scope": "E18 saved-score realized-loss diagnosis; E19 controlled simulation; author-executed clean-environment reproduction.",
+  "preservation": "Existing E0-E17 results, figure 1, author metadata and submission files are not edited.",
+  "E18": {
+    "primary_backbone": "Core S1 LR",
+    "secondary_backbones": [
+      "Restricted",
+      "CatBoost"
+    ],
+    "origins": [
+      "O1",
+      "O2",
+      "O3",
+      "O4"
+    ],
+    "primary_pair": [
+      "Expanding",
+      "Frozen"
+    ],
+    "secondary_pair": [
+      "Expanding",
+      "Raw"
+    ],
+    "terms": {
+      "P": "mean((e-f)^2)",
+      "A": "2*mean((e-f)*(y-f))",
+      "Delta": "P-A"
+    },
+    "identity_atol": 1e-12,
+    "bootstrap": {
+      "seed": 20261009,
+      "replicates": 2000,
+      "blocks": [
+        3,
+        7,
+        14
+      ],
+      "primary_block": 7,
+      "scheme": "Existing noncircular contiguous date blocks, concatenate/truncate to 60 dates; same weights for all terms"
+    },
+    "weekly": "Relative evaluation weeks, all four origins; final partial week marked",
+    "outcome_contributions": "Group sums divided by total cohort N; additive, not conditional group means",
+    "logloss": "Retain paired score results; no Brier decomposition asserted for log loss",
+    "interpretation": "Post-hoc realized-loss diagnostic; aggregate A is not an individual alignment guarantee or a causal attribution"
+  },
+  "E19": {
+    "days": 180,
+    "warmup_days": 60,
+    "evaluation_days": 120,
+    "orders_per_day": 500,
+    "replicates": 100,
+    "seed_entropy": 20261020,
+    "seed_rule": "SeedSequence([20261020, scenario_index, replicate_index]); scenario=0..3, replicate=0..99; technical tests use replicate>=10000",
+    "scores": [
+      "Brier",
+      "LogLoss",
+      "ExpectedBrier",
+      "ExpectedLogLoss",
+      "ProbabilityMSE",
+      "MeanPred",
+      "ActualRate"
+    ],
+    "scenarios": [
+      {
+        "name": "Correct",
+        "beta": [
+          1,
+          1,
+          1
+        ],
+        "c": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "FixedBias",
+        "beta": [
+          1,
+          1,
+          1
+        ],
+        "c": [
+          0.75,
+          0.75,
+          0.75
+        ]
+      },
+      {
+        "name": "Reversal",
+        "beta": [
+          1,
+          1,
+          1
+        ],
+        "c": [
+          0,
+          0.75,
+          -0.5
+        ]
+      },
+      {
+        "name": "Shape",
+        "beta": [
+          1,
+          0.6,
+          1.4
+        ],
+        "c": "Gauss-Hermite 100-node integration and Brent root: each phase has E(pi)=E(expit(z)); no labels used"
+      }
+    ],
+    "phase_boundaries": [
+      0,
+      60,
+      120,
+      180
+    ],
+    "approval": "day + Uniform(0,1), sorted within day",
+    "deadline": "floor(approval) + promise_days + 1 (exclusive promised-calendar-day end)",
+    "promise_days": [
+      1,
+      3,
+      7,
+      14,
+      30
+    ],
+    "promise_probabilities": [
+      0.1,
+      0.2,
+      0.3,
+      0.3,
+      0.1
+    ],
+    "outcomes": "Independent Bernoulli(pi) conditional on each order's generated score and phase",
+    "completion": "y=0: a+Uniform(0.05,0.95)*(d-a); y=1: d+Uniform(0.1,7)",
+    "event_assumption": "All simulated orders eventually complete; continuous perfect status observation and zero ingestion lag",
+    "information_policies": {
+      "Immediate": "r=a (unavailable in practice); only prior-day labels used at daily updates",
+      "Observed": "r=min(v,d), late status knowable at deadline",
+      "Closed": "e=max(r,d)=d"
+    },
+    "policy_pairing": "Same scores, approvals, deadlines, completion times and labels within a scenario/replicate",
+    "methods": [
+      "Raw",
+      "Frozen",
+      "Expanding",
+      "Rolling60",
+      "PoolRate"
+    ],
+    "pool": "Approval and information-policy eligibility strictly before daily midnight; Rolling60 additionally eligibility>=day-60",
+    "frozen": "Fit once at day 60 using policy-specific eligible pool, then retain unchanged",
+    "calibration": "Unpenalized log-loss intercept; same support thresholds as E17; PoolRate uses the Expanding pool",
+    "guard": {
+      "N": 1000,
+      "positive": 50,
+      "negative": 50,
+      "fallback": "Raw"
+    },
+    "clip": 1e-07,
+    "solver": "Newton with analytic derivative, max 30 iterations, mean residual <=1e-12; Brent fallback; log all failures/fallbacks",
+    "primary_pair": [
+      "Expanding",
+      "Frozen"
+    ],
+    "secondary_pairs": [
+      [
+        "Frozen",
+        "Raw"
+      ],
+      [
+        "Expanding",
+        "Raw"
+      ],
+      [
+        "Rolling60",
+        "Expanding"
+      ],
+      [
+        "PoolRate",
+        "Expanding"
+      ]
+    ],
+    "diagnostics": [
+      "P",
+      "A_realized",
+      "A_known_probability",
+      "P-A_realized",
+      "P-A_known_probability"
+    ],
+    "reporting_periods": [
+      "Full evaluation days 60-179",
+      "Phase1 days 60-119",
+      "Phase2 days 120-179"
+    ],
+    "statistics": "Per-sequence paired differences; mean, sample SD, MCSE, t(99) 95% confidence interval; independent sequence is replication unit",
+    "multiplicity": "Marginal descriptive intervals; no unadjusted familywise significance or equivalence claim",
+    "checks": [
+      "y agrees with completion vs deadline",
+      "no own/future label at prediction",
+      "closed eligibility==deadline",
+      "earlier on-time observation leaves closed pool and forecasts invariant",
+      "Raw equal across policies",
+      "Frozen and Expanding coincide at first evaluation update",
+      "realized and expected identities",
+      "analytic intercept root agreement",
+      "shape population prevalence invariant"
+    ],
+    "no_external_validation": "Synthetic results test constructed mechanisms and do not identify the cause of Olist changes",
+    "base_scores": {
+      "distribution": "Normal",
+      "mean": -2.5,
+      "sd": 1.0,
+      "raw": "expit(z)"
+    }
+  },
+  "reproduction": {
+    "public": "Fresh extracted public archive and newly created venv installed from pinned requirements",
+    "raw_origin": "O2",
+    "raw_absolute_score_tolerance": 1e-06,
+    "raw_prediction_tolerance": 1e-06,
+    "run_by": "Same research assistant, not independent third party",
+    "third_party_status": "Not performed; requires a person uninvolved in implementation",
+    "external_data": "No new dataset; module D conditional and not executed"
+  },
+  "resources": {
+    "logical_cpus": 20,
+    "simulation_workers": 20,
+    "library_threads_per_simulation_worker": 1,
+    "raw_reproduction_threads": 20,
+    "gpu": "Not used; exact CPU intercept models and frozen LR preserved",
+    "memory": "32 GiB installed; monitor actual resource use; do not oversubscribe thread libraries"
+  },
+  "stop": "Run all prespecified cases regardless of sign. Corrections only for documented technical errors; no favorable parameter search."
+}

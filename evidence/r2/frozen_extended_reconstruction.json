@@ -1,0 +1,34 @@
+[
+  {
+    "Origin": "O1",
+    "FrozenIntercept": 1.2871532659088316,
+    "OriginalN": 8539,
+    "MaxFrozenPredictionDifference": 3.608224830031759e-16,
+    "GeneratedAdditionalScores": 192,
+    "ModelRefitted": false
+  },
+  {
+    "Origin": "O2",
+    "FrozenIntercept": 0.5561379034866908,
+    "OriginalN": 12209,
+    "MaxFrozenPredictionDifference": 2.220446049250313e-16,
+    "GeneratedAdditionalScores": 249,
+    "ModelRefitted": false
+  },
+  {
+    "Origin": "O3",
+    "FrozenIntercept": -0.4912201101676708,
+    "OriginalN": 13407,
+    "MaxFrozenPredictionDifference": 1.6653345369377348e-16,
+    "GeneratedAdditionalScores": 329,
+    "ModelRefitted": false
+  },
+  {
+    "Origin": "O4",
+    "FrozenIntercept": -0.4065818820538201,
+    "OriginalN": 11650,
+    "MaxFrozenPredictionDifference": 1.1102230246251565e-16,
+    "GeneratedAdditionalScores": 192,
+    "ModelRefitted": false
+  }
+]

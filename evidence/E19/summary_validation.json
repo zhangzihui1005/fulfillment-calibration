@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "independent_sequences": 400,
+  "scenario_policy_runs": 1200,
+  "generated_orders": 36000000,
+  "evaluation_orders_before_reusing_across_policies_methods": 24000000,
+  "support_fallback_pool_days": 0,
+  "primary_endpoint": "Expanding-Frozen; observed and expected Brier",
+  "unit": "independent sequence",
+  "interval": "t(99), 95% marginal, paired within sequence",
+  "multiplicity": "No familywise significance or equivalence claims",
+  "all_scenarios_reported": true,
+  "parameters_tuned": false
+}

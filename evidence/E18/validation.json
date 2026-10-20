@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "prediction_files": 12,
+  "paired_analyses": 24,
+  "archived_score_interval_checks": 144,
+  "max_archived_error": 2.5680174133013716e-13,
+  "max_identity_error": 3.05311331771918e-16,
+  "workers": 12,
+  "library_threads": 1,
+  "elapsed_seconds": 2.1405428999569267,
+  "scope": "Saved predictions only; no fits; realized-loss diagnostics"
+}

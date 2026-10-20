@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "scientific_version": "0.4.1",
+  "distribution": "paper",
+  "retained_input_hashes": 85,
+  "real_data": {
+    "passed": true,
+    "checks": 504,
+    "max_abs_difference": 2.5680802970273753e-13,
+    "paired_intervals_rebuilt": 216,
+    "cross_backbone_intervals_rebuilt": 96,
+    "unknown_ranges_checked": 96,
+    "input_scope": "Public daily sufficient statistics and aggregated unknown-loss bounds; no record-level or model reproduction",
+    "no_training": true
+  },
+  "E18_daily_reconstruction": {
+    "checks": 480,
+    "max_numeric_difference": 3.552713678800501e-14
+  },
+  "E19_period_score_reconstruction": {
+    "absolute_scores": {
+      "rows": 1260,
+      "max_abs_difference": 1.6653345369377348e-16
+    },
+    "paired_effects": {
+      "rows": 900,
+      "max_abs_difference": 1.322455599889194e-16
+    },
+    "sequence_effect_quantiles": {
+      "rows": 900,
+      "max_abs_difference": 6.38378239159465e-16
+    },
+    "additional_checks": {
+      "checks": 1630,
+      "max_abs_difference": 7.997075224253081e-16,
+      "decomposition_rows_rebuilt": 360,
+      "sequence_metadata_rows": 400,
+      "scope": "Saved summary identities and paired period scores; archived event checks read, not independently rerun"
+    }
+  },
+  "training_rerun": false,
+  "simulation_generation_rerun": false,
+  "independent_person_replication": false,
+  "scope": "Daily-sum real-data checks and period-score simulation aggregation; see docs/REPRODUCTION_COVERAGE.md",
+  "environment": {
+    "python": "3.13.5",
+    "dependencies": "requirements-review-lock.txt"
+  }
+}

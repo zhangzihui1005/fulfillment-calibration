@@ -1,0 +1,26 @@
+﻿Feature,Type,Definition,Availability,Code
+item_count,numeric,商品行数量,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+product_count,numeric,不同product_id数,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_count,numeric,不同seller_id数,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+item_value,numeric,各商品price之和,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+freight_value,numeric,各商品freight_value之和,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+weight_g_mean,numeric,商品重量均值,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+volume_cm3_mean,numeric,length×height×width均值,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+product_photos_mean,numeric,商品图片数均值,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+product_description_length_mean,numeric,描述长度均值,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+approval_wait_hours,numeric,批准减购买时间，小时,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+approval_weekday,numeric,批准日星期编号0—6,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+approval_hour,numeric,批准小时0—23,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+same_state_largest_item,numeric,客户州与最高价商品卖家州是否一致,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+promise_days,numeric,承诺日减批准日，按归一化日历日,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_prior_orders_min,numeric,每卖家严格早于批准时点的全部批准订单数量，订单内取最小,strictly prior events only,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_prior_orders_mean,numeric,每卖家严格早于批准时点的全部批准订单数量，订单内取平均,strictly prior events only,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_observed_outcomes_min,numeric,每卖家严格早于批准时点已知结局数，限保留队列，订单内取最小,strictly prior events only,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_observed_outcomes_mean,numeric,每卖家严格早于批准时点已知结局数，限保留队列，订单内取平均,strictly prior events only,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_past_late_rate_max,numeric,每卖家(n_late+1)/(n_seen+20)，订单内取最大,strictly prior events only,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+seller_past_late_rate_mean,numeric,每卖家(n_late+1)/(n_seen+20)，订单内取平均,strictly prior events only,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+customer_state,categorical,客户州,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+largest_item_seller_state,categorical,最高price商品的卖家州，价格并列按order_item_id升序,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+product_category_name,categorical,同一代表商品类别,approval-time assumption,06_reproduction/archived_work/e4_package/olist_e4_intercept/run_baseline.py
+month_sin,numeric,sin(2π(month−1)/12),approval timestamp,06_reproduction/archived_work/execute_month_sensitivity.py
+month_cos,numeric,cos(2π(month−1)/12),approval timestamp,06_reproduction/archived_work/execute_month_sensitivity.py

@@ -1,0 +1,12 @@
+{
+  "scientific_version": "0.4.1",
+  "distribution": "manuscript",
+  "full_distribution_sha256": "2f46981710d71611eefe6e0e6306b2a1fb450505e1ad112638fb560c4e769822",
+  "format": "Plain CSV, JSON, Python, Markdown and PDF; no nested archives",
+  "source_evidence": "Unchanged selected frozen evidence and code, recorded in INPUTS.sha256",
+  "reproduction_scope": "docs/REPRODUCTION_COVERAGE.md",
+  "omitted": "Early exploratory archives, duplicate plot exports, raw/private records and regenerable daily simulation NPZ arrays",
+  "remote_publication_asserted": false,
+  "repository": "https://github.com/zhangzihui1005/fulfillment-calibration",
+  "observed_repository_commit": "b3a907cd6bef1ecf248cf25ffd19eeb559256a30"
+}

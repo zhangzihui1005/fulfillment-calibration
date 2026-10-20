@@ -1,0 +1,40 @@
+{
+  "seed": 20261009,
+  "replicates": 2000,
+  "block_days": [
+    3,
+    7,
+    14
+  ],
+  "scope": "Supplementary paired re-analysis of fixed archived predictions; no model fitting or retuning",
+  "new_analyses": [
+    "cross-backbone effect differences",
+    "Frozen extended-cohort bounds",
+    "Frozen time trajectories"
+  ],
+  "existing_intervals_rechecked": 216,
+  "checks_passed": 320,
+  "max_existing_error": 2.568088970644755e-13,
+  "input_sha256": {
+    "Core_O1.csv.gz": "27350b57f730b757dbfacb6f9289e1769d87f32af63e605db0ed68fefede0d18",
+    "Restricted_O1.csv.gz": "4879822762b35afaea1eab5e530dd074b8125a228f13fd3a58383f1d6cdc347c",
+    "CatBoost_O1.csv.gz": "1a596174e328d1270a1dbbd9c09ae0dbf772e68c5ae7c287818df86e3e45726f",
+    "Core_O1_pools.csv": "ed774e9e5984b9775efee7f106565f4c0d1399b60e480b38b2e241b9ca5d6119",
+    "Unknown_O1.csv.gz": "b3e400f68551cebd8b587c6c05f6ebd81a6f311c486ef294d0818516dd70c72c",
+    "Core_O2.csv.gz": "24533315c01a85177df56a6582c3d64e95aee28be4d0a44f2a59235e9a66b534",
+    "Restricted_O2.csv.gz": "d739bb3dbfaab8969d6b7d1f11c2ebd8bd75716751151fdf60532a0da54d34f4",
+    "CatBoost_O2.csv.gz": "3824f8aa47989c201fd62e6402b332e5c4c5c526acd18acce6694edcf4097db7",
+    "Core_O2_pools.csv": "9f57beb0cdaf85997a745d5bc2c1c36d0fcdf397407278d66e6fb2e4678e3cf1",
+    "Unknown_O2.csv.gz": "7cb4b4280f167c228ea15b96046c918d3922e515cd7dc3be016d987059a8e46c",
+    "Core_O3.csv.gz": "be498550e278bd243e05eec654e2b4c85165de8a35a674212862332790f1e86c",
+    "Restricted_O3.csv.gz": "3a1bbccba36ee2a17f2c35df014a855ebb3ca6f807ab5d9173e1533469f7470f",
+    "CatBoost_O3.csv.gz": "46b7c4d50eafd5d8ec57adccde2f8bb352acc9ca9ca946f949cf491b410c996a",
+    "Core_O3_pools.csv": "fd80364208b055c12e3951c8a7b60aa625756e62321f50fbb6b2aad799c8466b",
+    "Unknown_O3.csv.gz": "f29e674594beeed69bee1b4a1549d06c36bf3d021f1ab2eb4525b293cf384acd",
+    "Core_O4.csv.gz": "4c2fe4e6357d6dcca46965b936bc9016f783ef5962e54bf92de6e866354e51c9",
+    "Restricted_O4.csv.gz": "36562e37ecae6d98249850c734f5e27220a1c2a18129d866619d75a1a00dd7a6",
+    "CatBoost_O4.csv.gz": "f921d1ff9b8f4a0cff848e994c1ea8fa93627ea3aedf02e9156ea475ca3336f8",
+    "Core_O4_pools.csv": "08a67fdc48c4ada8fbd45340fc6842dc1ff70b5521aaf7ee038afe7a2120d9db",
+    "Unknown_O4.csv.gz": "89872726c492d5c4470d83484362971bd0e58389a08ba2e0ffa322e339f81fa6"
+  }
+}

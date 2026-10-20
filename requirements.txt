@@ -1,0 +1,9 @@
+# Reproduction environment (original experiment used Python 3.12.10)
+numpy==2.3.5
+pandas==2.2.3
+scipy==1.17.0
+scikit-learn==1.8.0
+threadpoolctl==3.6.0
+joblib==1.6.0
+matplotlib>=3.9,<4.0
+pytest>=8.3,<10
