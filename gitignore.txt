@@ -1,0 +1,11 @@
+/build/
+/outputs/
+/data/raw/
+__pycache__/
+.pytest_cache/
+.venv/
+*.log
+*.npz
+/tables/
+/figures/*
+!/figures/figure1_framework.pdf
